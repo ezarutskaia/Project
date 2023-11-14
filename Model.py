@@ -60,19 +60,5 @@ plt.xlabel('Predicted')
 plt.ylabel('Actual')
 #plt.show()
 
-def Prediction(T, H, P, V, ST):
-        data = pd.DataFrame(columns=['Temperature','Humidity', 'Pressure', 'Visibility', 'Start_Time'])
-        data.loc[len(data.index)] = [T, H, P, V, ST]
-        Predict = knc.predict(data)
-        return Predict
 
-#print(Prediction(50, 30, 30, 15, 13))
-
-def numerator(n, min=False, max=False):
-    #tp = type(n)
-    if min!=False and n < min:
-        raise ValueError('Значение меньше минимума', min)
-    if max!=False and n > max:
-        raise ValueError('Значение больше максимума', max)    
-    return int(n)
 
