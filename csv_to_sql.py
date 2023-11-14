@@ -4,13 +4,11 @@ from mysql.connector import connect, Error
 
 df = pd.read_csv("US_Accidents_March23.csv")
 
+# замена значение nan на none
 df = df.fillna(np.nan).replace([np.nan], [None])
 
+# перевод указанных столбцов в тип данных "строка"
 df[['Amenity', 'Bump', 'Crossing', 'Give_Way', 'Junction', 'No_Exit', 'Railway', 'Roundabout', 'Station', 'Stop', 'Traffic_Calming', 'Traffic_Signal', 'Turning_Loop']] = df[['Amenity', 'Bump', 'Crossing', 'Give_Way', 'Junction', 'No_Exit', 'Railway', 'Roundabout', 'Station', 'Stop', 'Traffic_Calming', 'Traffic_Signal', 'Turning_Loop']].astype(np.int8).astype(str)
-
-#print(df[['Amenity', 'Bump' , 'Crossing']])
-
-#exit()
 
 try:
     with connect(

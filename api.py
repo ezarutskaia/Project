@@ -1,21 +1,21 @@
-from function import Prediction
-from function import Model
+from function import prediction
+from function import model
 from function import interval
 from fastapi import FastAPI
 
 app = FastAPI()
 
-knc = Model()
+dtc = model()
 
 @app.get("/items")
-async def input_predictions(T: int, H: int, P: int, V: int, ST: int):
+async def input_predictions(t: int, h: int, p: int, v: int, st: int):
     try:
-        T = interval(T, -150, 150)
-        H = interval(H, 0, 100)
-        P = interval(P, 0, 100)
-        V = interval(V, 0, 100)
-        ST = interval(ST, 0, 23)
-        result = Prediction(knc, T, H, P, V, ST)
+        t = interval(t, -150, 150)
+        h = interval(h, 0, 100)
+        p = interval(p, 0, 100)
+        v = interval(v, 0, 100)
+        st = interval(st, 0, 23)
+        result = prediction(dtc, t, h, p, v, st)
         return {"severity": str(result)}
     except ValueError:
         return "data entry error"
